@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import About from "./components/About";
+import Nav from "./components/Nav";
 
 function App() {
+  // const [categories] = useState
+  const categories = ([
+    {
+      name: 'Pictures',
+      description: 'Pictures of my food',
+    },
+    {
+      name: 'Contact',
+      description: 'Checkout my social media pages, email, or call me',
+    }
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+   <Nav></Nav>
+   <main>
+   <About></About>
+   </main>
+   </div>
   );
 }
 
