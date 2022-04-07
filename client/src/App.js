@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import About from "./components/About";
 import Nav from "./components/Nav";
 import Gallery from "./components/Gallery";
+import SignUpForm from "./components/SignUp";
 
 function App() {
   const [categories] = useState([
     {
       name: 'Gallery',
-      description: "Pictures of my favorite meals I've created",
+      description: "Pictures from previous meals created by Go Go Gomez",
     },
     {
       name: 'Contact',
@@ -16,6 +17,7 @@ function App() {
   ]);
 
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
+  const [signUpSelected, setSignUpSelected] = useState(false);
 
   return (
     <div>
@@ -23,10 +25,18 @@ function App() {
         categories={categories}
         setCurrentCategory={setCurrentCategory}
         currentCategory={currentCategory}
+        signUpSelected={signUpSelected}
+        setSignUpSelected={setSignUpSelected}
       ></Nav>
       <main>
-        <Gallery currentCategory={currentCategory}></Gallery>
-        <About></About>
+        {!signUpSelected ? (
+          <>
+            <About></About>
+            <Gallery currentCategory={currentCategory}></Gallery>
+          </>
+        ) : (
+          <SignUpForm></SignUpForm>
+        )}
       </main>
     </div>
   );

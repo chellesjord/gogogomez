@@ -6,13 +6,10 @@ function Nav(props) {
     const {
         categories = [],
         setCurrentCategory,
+        signUpSelected,
         currentCategory,
+        setSignUpSelected,
     } = props
-
-    const handleClick = (item) => {
-        console.log(item);
-        return item;
-    };
 
     return (
         <header className="flex-row px-1">
@@ -22,34 +19,36 @@ function Nav(props) {
                 </a>
             </h2>
             <nav>
-                <ul className="flex-row">
-                    <li className="mx-2">
-                        <a href="#about">
-                            About us
-                        </a>
-                    </li>
-                    <li>
-                        <span>Sign Up</span>
-                    </li>
-                    {categories.map((category) => (
-                        <li
-                            className={`mx-1 ${currentCategory.name === category.name
-                                }`}
-                            key={category.name}
-                        >
-                            <span
-                                onClick={() => {
-                                    setCurrentCategory(category);
-                                }}
-                            >
-                                {capitalizeFirstLetter(category.name)}
-                            </span>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-        </header>
-    );
+        <ul className="flex-row">
+          <li className="mx-2">
+            <a data-testid="about" href="#about" onClick={() => setSignUpSelected(false)}>
+              About
+            </a>
+          </li>
+          <li className={`mx-2 ${signUpSelected && 'navActive'}`}>
+            <span onClick={() => setSignUpSelected(true)}>SignUp</span>
+          </li>
+          {categories.map((category) => (
+            <li
+              className={`mx-1 ${
+                currentCategory.name === category.name && !signUpSelected && 'navActive'
+                }`}
+              key={category.name}
+            >
+              <span
+                onClick={() => {
+                  setCurrentCategory(category);
+                  setSignUpSelected(false);
+                }}
+              >
+                {capitalizeFirstLetter(category.name)}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+  );
 }
 
 export default Nav;
