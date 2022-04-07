@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import About from "./components/About";
 import Nav from "./components/Nav";
+import Gallery from "./components/Gallery";
 
 function App() {
-  // const [categories] = useState
-  const categories = ([
+  const [categories] = useState([
     {
-      name: 'Pictures',
-      description: 'Pictures of my food',
+      name: 'Gallery',
+      description: "Pictures of my favorite meals I've created",
     },
     {
       name: 'Contact',
@@ -15,14 +15,22 @@ function App() {
     }
   ]);
 
+  const [currentCategory, setCurrentCategory] = useState(categories[0]);
+
   return (
     <div>
-   <Nav></Nav>
-   <main>
-   <About></About>
-   </main>
-   </div>
+      <Nav
+        categories={categories}
+        setCurrentCategory={setCurrentCategory}
+        currentCategory={currentCategory}
+      ></Nav>
+      <main>
+        <Gallery currentCategory={currentCategory}></Gallery>
+        <About></About>
+      </main>
+    </div>
   );
 }
 
 export default App;
+
