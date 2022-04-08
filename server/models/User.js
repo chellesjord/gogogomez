@@ -3,6 +3,16 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
     {
+        firstName: {
+            type: String,
+            required: true
+        },
+
+        lastName: {
+            type: String,
+            required: true
+        },
+        
         email: {
             type: String,
             required: true,
@@ -22,7 +32,8 @@ const userSchema = new Schema(
         },
         phoneNumber : {
             type: String,
-            required: true
+            required: true,
+            match: [/^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, 'Must enter a valid Phone number']
         }
 
     }
