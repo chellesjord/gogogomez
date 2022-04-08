@@ -14,10 +14,11 @@ const userSchema = new Schema(
             required: true
         },
         address: {
-            type: String
+            type: String,
+            required: true
         },
         allergies: {
-            type: String
+            type: [String]
         },
         phoneNumber : {
             type: String,
