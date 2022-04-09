@@ -36,7 +36,7 @@ function SignUpForm() {
             <h1>Sign Up</h1>
             <form id="sign-up-form">
                 <div>
-                    <label htmlFor="text">Fist Name:</label>
+                    <label htmlFor="text">First Name:</label>
                     <input type="text" name="firstName" defaultValue={firstName} onBlur={handleChange} />
                 </div>
                 <div>
@@ -73,7 +73,11 @@ function SignUpForm() {
                     <input type="checkbox" name="nuts" />
                 </div>
                 <div>
-                    <label htmlFor="fish">Fish/Shellfish</label>
+                    <label htmlFor="fish">Fish</label>
+                    <input type="checkbox" name="fish" />
+                </div>
+                <div>
+                    <label htmlFor="fish">Shellfish</label>
                     <input type="checkbox" name="fish" />
                 </div>
                 <div>
@@ -87,6 +91,11 @@ function SignUpForm() {
                 <div>
                     <label htmlFor="sesame">Sesame</label>
                     <input type="checkbox" name="sesame" />
+                </div>
+                <div>
+                    <label htmlFor="text">Other:</label>
+                    <input type="checkbox" name="sesame" />
+                    <input type="text" name="firstName"/>
                 </div>
                 {errorMessage && (
                     <div>
