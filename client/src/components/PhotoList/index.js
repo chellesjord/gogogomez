@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const PhotoList = ({ category }) => {
+const PhotoList = () => {
     const [photos] = useState([
         {
             name: 'Sample Name 0',

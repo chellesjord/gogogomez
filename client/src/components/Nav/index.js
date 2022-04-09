@@ -1,50 +1,27 @@
 import React from 'react';
 import Logo from "../../assets/cover/logo_gogogomez-removebg-preview.png";
-import { capitalizeFirstLetter } from '../../utils/helpers';
+import { Link } from 'react-router-dom';
 
-function Nav(props) {
-    const {
-        categories = [],
-        setCurrentCategory,
-        signUpSelected,
-        currentCategory,
-        setSignUpSelected,
-    } = props
 
+function Nav() {
     return (
         <header className="flex-row px-1">
             <h2>
                 <img src={Logo} class="logo-image" />
-                <a href="/"> Go Go Gomez
-                </a>
+                <Link to="/"> Go Go Gomez
+                </Link>
             </h2>
             <nav>
         <ul className="flex-row">
           <li className="mx-2">
-            <a data-testid="about" href="#about" onClick={() => setSignUpSelected(false)}>
-              About
-            </a>
+            <Link to="/about">About</Link>
           </li>
-          <li className={`mx-2 ${signUpSelected && 'navActive'}`}>
-            <span onClick={() => setSignUpSelected(true)}>SignUp</span>
+          <li className="mx-2">
+            <Link to="/signUp">SignUp</Link>
           </li>
-          {categories.map((category) => (
-            <li
-              className={`mx-1 ${
-                currentCategory.name === category.name && !signUpSelected && 'navActive'
-                }`}
-              key={category.name}
-            >
-              <span
-                onClick={() => {
-                  setCurrentCategory(category);
-                  setSignUpSelected(false);
-                }}
-              >
-                {capitalizeFirstLetter(category.name)}
-              </span>
-            </li>
-          ))}
+          <li className="mx-2">
+            <Link to="/gallery">Gallery</Link>
+          </li>          
         </ul>
       </nav>
     </header>
