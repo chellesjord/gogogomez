@@ -1,12 +1,16 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
+require('dotenv').config()
+const bodyParser = require("body-parser")
+const cors = require('cors')
+const nodemailer = require('nodemailer');
 
 const { typeDefs, resolvers } = require('./schemas')
 const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
+const { Router } = require('express');
 
-// const routes = require('./routes');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -32,6 +36,85 @@ startServer();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors())
+
+// transport.verify(function(error, success) {
+//   if(error){
+//     console.log(error)
+//   } else {
+//     console.log("server is ready to take our message")
+//   }
+// })
+
+app.post('/sign-up', (req, res, next) => {
+  const email = req.body.email
+  const firstName = req.body.firstName
+  const lastName = req.body.lastName
+  const address = req.body.address
+  const phoneNumber = req.body.phoneNumber
+
+  const content = `email: ${email} \n Full name: ${firstName} ${lastName}`
+  const transport = nodemailer.createTransport({
+    host: process.env.MAIL_HOST,
+    port: process.env.MAIL_PORT,
+    auth: {
+      user: process.env.MAIL_USER,
+      pass: process.env.MAIL_PASS
+    }
+  });
+
+  const mail ={ 
+    from: process.env.MAIL_FROM,
+    to: 'test@test.com',
+    subject:'You Got an ORDER!',
+    message: `${firstName}`,
+    content: content,
+    html: `
+    <h1>You Got an Order!</h1>
+    <p> ${firstName} </p>
+    <p> ${lastName} </p>
+    <p> ${address} </p>
+    <p> ${phoneNumber} </p>
+    `
+    
+  }
+
+  transport.sendMail(mail, (err, data) => {
+    if (err) {
+      res.json({
+        status: 'fail'
+      })
+    } else {
+      res.json({
+        status: 'success'
+      })
+    }
+  })
+
+})
+
+
+
+// app.post('/send_mail', cors(), async (req, res) => {
+//     let {firstName} = req.body.firstName
+//     const transport = nodemailer.createTransport({
+//       host: process.env.MAIL_HOST,
+//       port: process.env.MAIL_PORT,
+//       auth: {
+//         user: process.env.MAIL_USER,
+//         pass: process.env.MAIL_PASS
+//       }
+//     })
+//     await transport.sendMail({
+//       from: process.env.MAIL_FROM,
+//       to: "test@test.com",
+//       subject: "You got an ORDER!",
+//       html: `
+//       <h2>you got an order</h2>
+//       <p>${firstName}</p>
+//       `
+//     })
+// })
 
 // static assets under here 
 
