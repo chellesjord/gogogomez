@@ -14,7 +14,7 @@ function SignUpForm() {
     });
 
     const [isError, setIsError] = useState(false);
-    const { firstName, lastName, email, password, phoneNumber, address } = formState;
+    const { firstName, lastName, email, password, phoneNumber, address, allergies } = formState;
 
     const handleSend = async (e) => {
         e.preventDefault();
@@ -24,7 +24,7 @@ function SignUpForm() {
             headers: {
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify({email, firstName, lastName, phoneNumber, address})
+            body: JSON.stringify({email, firstName, lastName, phoneNumber, address, allergies})
             
         });
         const resData = await response.json();
@@ -97,7 +97,7 @@ function SignUpForm() {
                 <h3 class="text-tertiary">Do you have any allergies?</h3>
                 <div>
                     <label htmlFor="eggs">Eggs</label>
-                    <input type="checkbox" value="eggs" name="allergies" onChange={handleChecked} />
+                    <input type="checkbox" value={formState.allergies} name="allergies" onChange={handleChecked} />
                 </div>
                 <div>
                     <label htmlFor="dairy">Milk/Dairy</label>

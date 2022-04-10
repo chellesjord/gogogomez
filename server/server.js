@@ -51,6 +51,7 @@ app.post('/sign-up', (req, res, next) => {
   const firstName = req.body.firstName
   const lastName = req.body.lastName
   const address = req.body.address
+  const allergies = req.body.allergies
   const phoneNumber = req.body.phoneNumber
 
   const content = `email: ${email} \n Full name: ${firstName} ${lastName}`
@@ -75,6 +76,8 @@ app.post('/sign-up', (req, res, next) => {
     <p> ${lastName} </p>
     <p> ${address} </p>
     <p> ${phoneNumber} </p>
+    <h1> Allergies </h1>
+    <p> ${allergies} </p>
     `
     
   }
