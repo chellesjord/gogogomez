@@ -21,7 +21,10 @@ function Nav() {
           </li>
           <li className="mx-2">
             <Link to="/gallery">Gallery</Link>
-          </li>          
+          </li>
+          <li className="mx-2">
+            <Link to="/Augie">Augie</Link>
+          </li>           
         </ul>
       </nav>
     </header>

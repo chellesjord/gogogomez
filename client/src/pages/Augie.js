@@ -1,14 +1,14 @@
 import React from 'react';
-import About from '../components/About';
+import UserTable from '../components/UserTable';
 // import Auth from '../utils/auth';
 // import { useQuery } from '@apollo/client';
 
-const HomePage = () => {
+const AugiePage = () => {
     return (
         <main>
-            <About />
+            <UserTable/>
         </main>
     );
 };
 
-export default HomePage;
+export default AugiePage;

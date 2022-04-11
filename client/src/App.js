@@ -8,6 +8,7 @@ import HomePage from "./pages/Home";
 import SignUpPage from "./pages/SignUp";
 import AboutPage from "./pages/About";
 import GalleryPage from "./pages/Gallery";
+import AugiePage from "./pages/Augie";
 import NoMatchPage from "./pages/NoMatch";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route exact path="/SignUp" element={<SignUpPage />} />
             <Route exact path="/About" element={<AboutPage />} />
             <Route exact path="/Gallery" element={<GalleryPage />} />
+            <Route exact path="/Augie" element={<AugiePage />} />
             <Route component={NoMatchPage} />
           </Routes>
           <Footer/>
