@@ -38,13 +38,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors())
 
-// transport.verify(function(error, success) {
-//   if(error){
-//     console.log(error)
-//   } else {
-//     console.log("server is ready to take our message")
-//   }
-// })
 
 app.post('/sign-up', (req, res, next) => {
   const email = req.body.email
@@ -97,28 +90,6 @@ app.post('/sign-up', (req, res, next) => {
 })
 
 
-
-// app.post('/send_mail', cors(), async (req, res) => {
-//     let {firstName} = req.body.firstName
-//     const transport = nodemailer.createTransport({
-//       host: process.env.MAIL_HOST,
-//       port: process.env.MAIL_PORT,
-//       auth: {
-//         user: process.env.MAIL_USER,
-//         pass: process.env.MAIL_PASS
-//       }
-//     })
-//     await transport.sendMail({
-//       from: process.env.MAIL_FROM,
-//       to: "test@test.com",
-//       subject: "You got an ORDER!",
-//       html: `
-//       <h2>you got an order</h2>
-//       <p>${firstName}</p>
-//       `
-//     })
-// })
-
 // static assets under here 
 
 
@@ -133,7 +104,6 @@ app.post('/sign-up', (req, res, next) => {
 //     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 //   });
 
-//   app.use(routes);
 
 db.once('open', () => {
     app.listen(PORT, () => {

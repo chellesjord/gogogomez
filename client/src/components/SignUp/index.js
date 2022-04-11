@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React, { useState } from 'react';
 import { validateEmail } from '../../utils/helpers';
 
@@ -34,6 +33,8 @@ function SignUpForm() {
             console.log("message failed to send")
         }
     };
+
+    // Will un comment this out later - Isaac 
 
     // const handleValidation = (e) => {
     //     if (e.target.name === 'email') {
