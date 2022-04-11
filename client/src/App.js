@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import About from "./components/About";
+import Nav from "./components/Nav";
+import Gallery from "./components/Gallery";
+import SignUpForm from "./components/SignUp";
 
 function App() {
+  const [categories] = useState([
+    {
+      name: 'Gallery',
+      description: "Pictures from previous meals created by Go Go Gomez",
+    },
+    {
+      name: 'Contact',
+      description: 'Checkout my social media pages, email, or call me',
+    }
+  ]);
+
+  const [currentCategory, setCurrentCategory] = useState(categories[0]);
+  const [signUpSelected, setSignUpSelected] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Nav
+        categories={categories}
+        setCurrentCategory={setCurrentCategory}
+        currentCategory={currentCategory}
+        signUpSelected={signUpSelected}
+        setSignUpSelected={setSignUpSelected}
+      ></Nav>
+      <main>
+        {!signUpSelected ? (
+          <>
+            <About></About>
+            <Gallery currentCategory={currentCategory}></Gallery>
+          </>
+        ) : (
+          <SignUpForm></SignUpForm>
+        )}
+      </main>
     </div>
   );
 }
 
 export default App;
+
