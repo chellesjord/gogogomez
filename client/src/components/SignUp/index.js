@@ -9,43 +9,79 @@ function SignUpForm() {
         password: '',
         phoneNumber: '',
         address: '',
+        allergies: []
     });
 
-    const [errorMessage, setErrorMessage] = useState('');
-    const { firstName, lastName, email, password, phoneNumber, address } = formState;
+    const [isError, setIsError] = useState(false);
+    const { firstName, lastName, email, password, phoneNumber, address, allergies } = formState;
 
-    const handleChange = (e) => {
-        if (e.target.name === 'email') {
-            const isValid = validateEmail(e.target.value);
-            if (!isValid) {
-                setErrorMessage('Your email is invalid.');
-            } else {
-                setErrorMessage('');
-            }
-        } else {
-            if (!e.target.value.length) {
-                setErrorMessage(`${e.target.name} is required.`);
-            } else {
-                setErrorMessage('');
-            }
+    const handleSend = async (e) => {
+        e.preventDefault();
+        console.log(e.target, firstName)
+        const response = await fetch ('http://localhost:3001/sign-up', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({email, firstName, lastName, phoneNumber, address, allergies})
+            
+        });
+        const resData = await response.json();
+        if(resData.status === 'success'){
+            console.log("message sent")
+        } else if (resData.status === 'fail'){
+            console.log("message failed to send")
         }
     };
+
+    // Will un comment this out later - Isaac 
+
+    // const handleValidation = (e) => {
+    //     if (e.target.name === 'email') {
+    //         const isValid = validateEmail(e.target.value);
+    //         if (!isValid) {
+    //             setErrorMessage('Your email is invalid.');
+    //         } else {
+    //             setErrorMessage('');
+    //         }
+    //     } else {
+    //         if (!e.target.value.length) {
+    //             setErrorMessage(`${e.target.name} is required.`);
+    //         } else {
+    //             setErrorMessage('');
+    //         }
+    //     }
+    // };
+
+
+    const handleChange = (e) => {
+        setFormState({...formState, [e.target.name]:e.target.value});
+        console.log(formState);
+    }
+
+    const handleChecked = (e) => {
+        if(e.target.checked){
+            setFormState({...formState, [e.target.name]:[e.target.name].push(e.target.value)})
+        } else {
+            setFormState({...formState, [e.target.name]:[e.target.name].splice([e.target.name].indexOf(e.target.value), 1)})
+        }
+    }
 
     return (
         <section>
             <h1>Sign Up</h1>
-            <form id="sign-up-form">
+            <form id="sign-up-form" onSubmit={handleSend}>
                 <div>
                     <label htmlFor="text">Fist Name:</label>
-                    <input type="text" name="firstName" defaultValue={firstName} onBlur={handleChange} />
+                    <input type="text" value={formState.firstName} name="firstName" onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="text">Last Name:</label>
-                    <input type="text" name="firstName" defaultValue={lastName} onBlur={handleChange} />
+                    <input type="text"  value={formState.lastName} name="lastName" onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="email">Email address:</label>
-                    <input type="email" name="email" defaultValue={email} onBlur={handleChange} />
+                    <input type="text" value={formState.email} name="email" onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="password">Password:</label>
@@ -53,16 +89,16 @@ function SignUpForm() {
                 </div>
                 <div>
                     <label htmlFor="tel">Phone Number:</label>
-                    <input type="tel" name="phoneNumber" defaultValue={phoneNumber} onBlur={handleChange} />
+                    <input type="tel"  value={formState.phoneNumber} name="phoneNumber"  onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="text">Delivery address:</label>
-                    <input type="text" name="address" defaultValue={address} onBlur={handleChange} />
+                    <input type="text"  value={formState.address} name="address" onChange={handleChange} />
                 </div>
                 <h3 class="text-tertiary">Do you have any allergies?</h3>
                 <div>
                     <label htmlFor="eggs">Eggs</label>
-                    <input type="checkbox" name="eggs" />
+                    <input type="checkbox" value={formState.allergies} name="allergies" onChange={handleChecked} />
                 </div>
                 <div>
                     <label htmlFor="dairy">Milk/Dairy</label>
@@ -88,9 +124,9 @@ function SignUpForm() {
                     <label htmlFor="sesame">Sesame</label>
                     <input type="checkbox" name="sesame" />
                 </div>
-                {errorMessage && (
+                {isError && (
                     <div>
-                        <p className="error-text">{errorMessage}</p>
+                        <p className="error-text">Error</p>
                     </div>
                 )}
                 <button type="submit">Submit</button>

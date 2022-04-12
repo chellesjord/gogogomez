@@ -1,12 +1,16 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
+require('dotenv').config()
+const bodyParser = require("body-parser")
+const cors = require('cors')
+const nodemailer = require('nodemailer');
 
 const { typeDefs, resolvers } = require('./schemas')
 const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
+const { Router } = require('express');
 
-// const routes = require('./routes');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -32,6 +36,59 @@ startServer();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors())
+
+
+app.post('/sign-up', (req, res, next) => {
+  const email = req.body.email
+  const firstName = req.body.firstName
+  const lastName = req.body.lastName
+  const address = req.body.address
+  const allergies = req.body.allergies
+  const phoneNumber = req.body.phoneNumber
+
+  const content = `email: ${email} \n Full name: ${firstName} ${lastName}`
+  const transport = nodemailer.createTransport({
+    host: process.env.MAIL_HOST,
+    port: process.env.MAIL_PORT,
+    auth: {
+      user: process.env.MAIL_USER,
+      pass: process.env.MAIL_PASS
+    }
+  });
+
+  const mail ={ 
+    from: process.env.MAIL_FROM,
+    to: 'test@test.com',
+    subject:'You Got an ORDER!',
+    message: `${firstName}`,
+    content: content,
+    html: `
+    <h1>You Got an Order!</h1>
+    <p> ${firstName} </p>
+    <p> ${lastName} </p>
+    <p> ${address} </p>
+    <p> ${phoneNumber} </p>
+    <h1> Allergies </h1>
+    <p> ${allergies} </p>
+    `
+    
+  }
+
+  transport.sendMail(mail, (err, data) => {
+    if (err) {
+      res.json({
+        status: 'fail'
+      })
+    } else {
+      res.json({
+        status: 'success'
+      })
+    }
+  })
+
+})
+
 
 // static assets under here 
 
@@ -47,7 +104,6 @@ app.use(express.json());
 //     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 //   });
 
-//   app.use(routes);
 
 db.once('open', () => {
     app.listen(PORT, () => {
