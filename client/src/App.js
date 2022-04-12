@@ -11,8 +11,20 @@ import GalleryPage from "./pages/Gallery";
 import AugiePage from "./pages/Augie";
 import NoMatchPage from "./pages/NoMatch";
 
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+})
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache()
+});
+
 function App() {
   return (
+    <ApolloProvider client={client}>
     <div>
       <HashRouter>
         <Nav />
@@ -30,6 +42,7 @@ function App() {
        
       </HashRouter>
     </div>
+    </ApolloProvider>
   );
 }
 
