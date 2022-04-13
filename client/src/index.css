@@ -100,8 +100,6 @@ header {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  position: -webkit-sticky;
-  position: sticky;
   top: 0;
   /* background-image: url("../src/assets/cover/coverImage.jpg"); */
   background-size: cover;
@@ -138,6 +136,8 @@ button[disabled] {
 
 img {
   max-width: 100%;
+  border-radius: 18px;
+  padding: 10px;
 }
 
 span[role="img"] {
