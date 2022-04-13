@@ -7,15 +7,17 @@ const Modal = ({ onClose, currentPhoto }) => {
     return (
       <div className="modalBackdrop">
         <div className="modalContainer">
-          <h3 className="modalTitle">{name}</h3>
           <img
             src={require(`../../assets/food_gallery/${index}.jpg`)}
             alt="current category"
           />
-          <p>{description}</p>
-          <button type="button" onClick={onClose}>
-            Close this modal
-          </button>
+          <div className="modalDescription">
+            <h3 className="modalTitle">{name}</h3>
+            <p>{description}</p>
+            <button type="button" onClick={onClose}>
+                Close this modal
+            </button>
+          </div>
         </div>
       </div>
     );
