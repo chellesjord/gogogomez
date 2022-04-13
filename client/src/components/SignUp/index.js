@@ -1,4 +1,7 @@
+import Auth from '../../utils/auth'
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../../utils/mutations';
 import { validateEmail } from '../../utils/helpers';
 
 function SignUpForm() {
@@ -12,27 +15,48 @@ function SignUpForm() {
         allergies: []
     });
 
+    const [addUser, { error }] = useMutation(ADD_USER);
     const [isError, setIsError] = useState(false);
     const { firstName, lastName, email, password, phoneNumber, address, allergies } = formState;
 
-    const handleSend = async (e) => {
-        e.preventDefault();
-        console.log(e.target, firstName)
-        const response = await fetch ('http://localhost:3001/sign-up', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({email, firstName, lastName, phoneNumber, address, allergies})
+    // const handleSend = async (e) => {
+    //     e.preventDefault();
+    //     console.log(e.target, firstName)
+    //     const response = await fetch ('http://localhost:3001/sign-up', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify({email, firstName, lastName, phoneNumber, address, allergies})
             
-        });
-        const resData = await response.json();
-        if(resData.status === 'success'){
-            console.log("message sent")
-        } else if (resData.status === 'fail'){
-            console.log("message failed to send")
+    //     });
+    //     const resData = await response.json();
+    //     if(resData.status === 'success'){
+    //         console.log("message sent")
+    //     } else if (resData.status === 'fail'){
+    //         console.log("message failed to send")
+    //     }
+    // };
+
+    const handleFormSubmit = async event => {
+        event.preventDefault();
+
+        // console.log({...formState})
+
+        // using a try/catch instead of a promise to handle errors
+        try {
+            // console.log(formState)
+            const { data } = await addUser({
+                variables: { 
+                    email: formState.email
+                 }
+            }).then(res => console.log(res))
+            // console.log(data)
+            Auth.login(data.addUser.token)
+        } catch (error) {
+            console.error(error)
         }
-    };
+    }
 
     // Will un comment this out later - Isaac 
 
@@ -70,17 +94,22 @@ function SignUpForm() {
     return (
         <section>
             <h1>Sign Up</h1>
-            <form id="sign-up-form" onSubmit={handleSend}>
+            <form id="sign-up-form" onSubmit={handleFormSubmit} method="POST">
                 <div>
-                    <input type="text" name="firstName" defaultValue={firstName} onBlur={handleChange} />
+                    <label htmlFor="name">First Name:</label>
+                    <input type="text" name="firstName" value={formState.firstName} onChange={handleChange} />
+                </div>
+                <div>
+                    <label htmlFor="name">Last Name:</label>
+                    <input type="text" name="lastName" value={formState.lastName} onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="email">Email address:</label>
-                    <input type="text" value={formState.email} name="email" onChange={handleChange} />
+                    <input type="email" value={formState.email} name="email" onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="password">Password:</label>
-                    <input type="password" name="password" defaultValue={password} onBlur={handleChange} />
+                    <input type="password" name="password" value={formState.password} onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="tel">Phone Number:</label>
@@ -93,7 +122,7 @@ function SignUpForm() {
                 <h3 class="text-tertiary">Do you have any allergies?</h3>
                 <div>
                     <label htmlFor="eggs">Eggs</label>
-                    <input type="checkbox" value={formState.allergies} name="allergies" onChange={handleChecked} />
+                    <input type="checkbox" name="allergies" />
                 </div>
                 <div>
                     <label htmlFor="dairy">Milk/Dairy</label>
@@ -135,6 +164,7 @@ function SignUpForm() {
                 )}
                 <button type="submit">Submit</button>
             </form>
+            {error && <div>Sign up failed ):</div>}
         </section>
     )
 }

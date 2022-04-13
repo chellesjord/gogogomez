@@ -1,7 +1,7 @@
 {
   "name": "gogogomez",
   "version": "0.1.0",
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:3000",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.5.10",
@@ -12,6 +12,7 @@
     "express": "^4.17.3",
     "graphql": "^16.3.0",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
@@ -19,7 +20,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --max-http-header-size=12000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
