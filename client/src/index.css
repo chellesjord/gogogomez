@@ -138,6 +138,8 @@ button[disabled] {
 
 img {
   max-width: 100%;
+  border-radius: 18px;
+  padding: 10px;
 }
 
 span[role="img"] {
