@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e9d46be2.css",
+    "main.js": "/static/js/main.911e00a5.js",
+    "static/js/787.720ffdb2.chunk.js": "/static/js/787.720ffdb2.chunk.js",
+    "static/media/11.jpg": "/static/media/11.1070c03bfb81d648345b.jpg",
+    "static/media/8.jpg": "/static/media/8.19fd4506495b23dd0a87.jpg",
+    "static/media/6.jpg": "/static/media/6.e932a7bcf10404eb5318.jpg",
+    "static/media/1.jpg": "/static/media/1.e7b69471871e69a2f200.jpg",
+    "static/media/5.jpg": "/static/media/5.af0374a10ef321220f6e.jpg",
+    "static/media/0.jpg": "/static/media/0.8a1cab522f60cd0d09f6.jpg",
+    "static/media/10.jpg": "/static/media/10.e1ac8cf197f0ff2fbcb4.jpg",
+    "static/media/2.jpg": "/static/media/2.838819580be7033f2c0c.jpg",
+    "static/media/4.jpg": "/static/media/4.60411ed9a7c1b71a1bc4.jpg",
+    "static/media/9.jpg": "/static/media/9.6d456056662070e46187.jpg",
+    "static/media/3.jpg": "/static/media/3.909f4510bb4e4ed1be6b.jpg",
+    "static/media/7.jpg": "/static/media/7.909f4510bb4e4ed1be6b.jpg",
+    "static/media/logo_gogogomez-removebg-preview.png": "/static/media/logo_gogogomez-removebg-preview.130f8eb04f6184a45d19.png",
+    "index.html": "/index.html",
+    "main.e9d46be2.css.map": "/static/css/main.e9d46be2.css.map",
+    "main.911e00a5.js.map": "/static/js/main.911e00a5.js.map",
+    "787.720ffdb2.chunk.js.map": "/static/js/787.720ffdb2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e9d46be2.css",
+    "static/js/main.911e00a5.js"
+  ]
+}
