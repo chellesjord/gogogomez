@@ -2,7 +2,7 @@ import React from "react";
 import './style.css'
 
 const Modal = ({ onClose, currentPhoto }) => {
-    const { name, description, category, index } = currentPhoto;
+    const { name, description, index } = currentPhoto;
   
     return (
       <div className="modalBackdrop">
