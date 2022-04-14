@@ -8,7 +8,7 @@
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
+    "start": "node server/server.js",
     "build": "cd client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/chellesjord/gogogomez/issues"
   },
-  "homepage": "https://github.com/chellesjord/gogogomez#readme"
+  "homepage": "https://github.com/chellesjord/gogogomez#readme",
+  "dependencies": {
+    "concurrently": "^7.1.0"
+  }
 }
