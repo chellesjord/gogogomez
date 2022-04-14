@@ -7,63 +7,58 @@ const PhotoList = () => {
 
     const [photos] = useState([
         {
-            name: 'Food Item 1',
+            name: 'Bagels and Lox',
             category: 'Gallery',
-            description: 'Something amazing should be here',
+            description: 'Thinly sliced, smoked, alaskan salmon on a bagel topped with whipped cream cheese.',
         },
         {
-            name: 'Sample Name 1',
+            name: 'Sriracha Chops',
             category: 'Gallery',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
+            description: 'Grilled, orange pepper, pork tenderloin over a bead of white jasmine rice and GoGoGomez signature kale medley (corn, kale, red and orange bell peppers and shiitake mushrooms) drizzled with a Kimchi Sriracha sauce garnished with red cabbage.',
         },
         {
-            name: 'Sample Name 2',
+            name: 'Fuji Rose',
             category: 'Gallery',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
+            description: 'Apple cinnamon delight! a mixture of sugar, cream cheese, butter croissant and apples. Fuji apples thinly sliced and marinated in citrus juice, layered and rolled in cream cheese and coated in cinnamon sugar sprinkles.',
         },
         {
-            name: 'Sample Name 3',
+            name: 'G.O.A.T. Chicken Salad',
             category: 'Gallery',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
+            description: 'Field greens salad topped with pan seared chicken a la mexicana style and accompanied with Goats cheese. Garnished with seasonal select cherry tomatoes and fresh organic cabbage.',
         },
         {
-            name: 'Sample Name 4',
+            name: 'Family Chops',
             category: 'Gallery',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
+            description: 'Family style meal (feeds 4-5) Basted rosemary infused pork tenderloin steaks served with pan sauteed artichoke tomato salsa, homemade coleslaw, garlic-parmesan cream rice and grilled asparagus.',
         },
         {
-            name: 'Sample Name 5',
+            name: 'Andouille salad',
             category: 'Gallery',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
+            description: 'Pan fried andouille sausage married with caramelized tomatoes and onions on a bed of baby greens and cabbage accompanied by pimento green olives, sliced baby carrots, diced zucchini, fresh baby bella mushrooms, and pickled cilantro lime cucumber.',
         },
         {
-            name: 'Sample Name 6',
+            name: 'Celsius Chia Pudding',
             category: 'Gallery',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
+            description: 'Dragon fruit Celsius infused chia pudding topped with fresh cherries, blueberries, golden berries, red currant and a navel orange star.',
         },
         {
-            name: 'Sample Name 7',
+            name: 'Vanilla Chia Pudding',
             category: 'Gallery',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
+            description: 'Vanilla infused chia pudding topped with banana slices, pecan crumble, walnut pieces, almond slices and pumpkinseed.',
         },
         {
-            name: 'Sample Name 8',
+            name: 'Salmon Bento',
             category: 'Gallery',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
+            description: 'smoked Alaskan salmon stuffed rice balls featuring smoked salmon roses, a nest of wakame (seaweed salad), peach balsamic infused red cabbage, and flour shaped cucumber.',
         },
         {
-            name: 'Sample Name 9',
+            name: 'Sweet and Sour Pork',
             category: 'Gallery',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
-        },
-        {
-            name: 'Sample Name 10',
-            category: 'Gallery',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
+            description: 'center cut pork fillet pan fried with GoGoGomez sweet and sour sauce on a bed of field greens and a side of wedged baby rainbow carrots and sticky teff rice garnished with green scallion.',
         }, {
-            name: 'Sample Name 11',
+            name: 'Bourbon Chicken',
             category: 'Gallery',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
+            description: 'Bourbon steak seasoned and marinated chicken breast grilled to perfection over an open flame placed on top of a bead of tomato chicken infused couscous and a side of steamed broccoli, carrots and cauliflower.',
         },
     ]);
 
