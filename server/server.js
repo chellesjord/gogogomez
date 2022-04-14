@@ -92,17 +92,13 @@ app.post('/sign-up', (req, res, next) => {
 
 // static assets under here 
 
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')));
+}
 
-
-// Will uncomment  out everything under this  once we create a build folder for production
-
-// if(process.env.NODE_ENV === 'production') {
-//     app.use(express.static(path.join(__dirname, '../client/build')));
-// }
-
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../client/build/index.html'));
-//   });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
 
 
 db.once('open', () => {
