@@ -72,12 +72,7 @@ function SignUpForm() {
             <h1>Sign Up</h1>
             <form id="sign-up-form" onSubmit={handleSend}>
                 <div>
-                    <label htmlFor="text">Fist Name:</label>
-                    <input type="text" value={formState.firstName} name="firstName" onChange={handleChange} />
-                </div>
-                <div>
-                    <label htmlFor="text">Last Name:</label>
-                    <input type="text"  value={formState.lastName} name="lastName" onChange={handleChange} />
+                    <input type="text" name="firstName" defaultValue={firstName} onBlur={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="email">Email address:</label>
@@ -109,7 +104,11 @@ function SignUpForm() {
                     <input type="checkbox" name="nuts" />
                 </div>
                 <div>
-                    <label htmlFor="fish">Fish/Shellfish</label>
+                    <label htmlFor="fish">Fish</label>
+                    <input type="checkbox" name="fish" />
+                </div>
+                <div>
+                    <label htmlFor="fish">Shellfish</label>
                     <input type="checkbox" name="fish" />
                 </div>
                 <div>
@@ -123,6 +122,11 @@ function SignUpForm() {
                 <div>
                     <label htmlFor="sesame">Sesame</label>
                     <input type="checkbox" name="sesame" />
+                </div>
+                <div>
+                    <label htmlFor="text">Other:</label>
+                    <input type="checkbox" name="sesame" />
+                    <input type="text" name="firstName"/>
                 </div>
                 {isError && (
                     <div>
