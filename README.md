@@ -55,8 +55,18 @@ Tanner Brieger
 
 GitHub Links:
 
+[chellesjord](https://github.com/chellesjord)
+
 [TannerReed29](https://github.com/TannerReed29)
 
+[iyanezz2314](https://github.com/iyanez2314)
+
+[Mattrick127](https://github.com/Mattrick127)
+
 Emails:
+
+m.kayejordan@gmail.com
+
+isaac231467@icloud.com
 
 tanner29@gmail.com
