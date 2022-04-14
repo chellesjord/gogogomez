@@ -9,7 +9,7 @@ main {
   --secondary: #F19953;
   --tertiary: #754043;
   --light: #fafafa;
-  --dark: #000000;
+  --dark: #292929;
   --darker: #111111;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
@@ -100,7 +100,11 @@ header {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  position: -webkit-sticky;
+  position: sticky;
   top: 0;
+  border-bottom-style: groove;
+  border-bottom-color: #DDAA44;
   /* background-image: url("../src/assets/cover/coverImage.jpg"); */
   background-size: cover;
   background-position: center;
@@ -110,7 +114,7 @@ header {
 }
 
 header a {
-  color: var(--light);
+  color: #DDAA44;
 }
 
 button {
@@ -136,8 +140,6 @@ button[disabled] {
 
 img {
   max-width: 100%;
-  border-radius: 18px;
-  padding: 10px;
 }
 
 span[role="img"] {
@@ -146,6 +148,19 @@ span[role="img"] {
 
 form {
   width: 40%;
+}
+
+.signup{
+  text-align: center;
+  display: flex;
+  /* justify-content: center; */
+}
+.signup-title{
+  color: #DDAA44;
+}
+#sign-up-form{
+  justify-content: center;
+  
 }
 
 input {
@@ -180,6 +195,12 @@ nav  li {
   border-radius: 20%;
   overflow: hidden;
   margin-top: -6px;
+}
+
+.Title{
+  color: #DDAA44;
+  text-decoration: none;
+  font-size: 2.4rem;
 }
 
 textarea {
@@ -299,7 +320,7 @@ textarea {
 }
 
 button {
-	background: var(--primary);
+	background: #DDAA44;
 	border: 0;
 	border-radius: 5px;
 	color: #fff;
@@ -338,3 +359,25 @@ a {
   z-index: 9999;
 }
 
+.button-big {
+  padding: .9rem 2.3rem;
+  font-size: 1.2rem;
+}
+
+.button-rouded {
+  border-radius: 5rem;
+}
+
+.nav-links{
+  font-size: 1.7rem;
+  padding-top: 2rem;
+  color: #DDAA44;
+}
+
+.Facebook{
+  font-size: xx-large;
+}
+
+.Insta{
+  font-size: xx-large;
+}
