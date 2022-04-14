@@ -8,10 +8,10 @@ function Nav() {
         <header className="flex-row px-1">
             <h2>
                 <img src={Logo} class="logo-image" />
-                <Link to="/"> Go Go Gomez
+                <Link className='Title' to="/"> Go Go Gomez
                 </Link>
             </h2>
-            <nav>
+            <nav className='nav-links'>
         <ul className="flex-row">
           <li className="mx-2">
             <Link to="/about">About</Link>

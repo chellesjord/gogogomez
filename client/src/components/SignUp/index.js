@@ -92,32 +92,32 @@ function SignUpForm() {
     }
 
     return (
-        <section>
-            <h1>Sign Up</h1>
+        <section className='signup'>
+            <h1 className='signup-title'>Sign Up</h1>
             <form id="sign-up-form" onSubmit={handleFormSubmit} method="POST">
-                <div>
+                <div className='px-1 py-1'>
                     <label htmlFor="name">First Name:</label>
-                    <input type="text" name="firstName" value={formState.firstName} onChange={handleChange} />
+                    <input type="text" name="firstName" placeholder='Enter First Name' value={formState.firstName} onChange={handleChange} />
                 </div>
-                <div>
+                <div className='px-1 py-1'>
                     <label htmlFor="name">Last Name:</label>
-                    <input type="text" name="lastName" value={formState.lastName} onChange={handleChange} />
+                    <input type="text" name="lastName" placeholder='Enter Last Name' value={formState.lastName} onChange={handleChange} />
                 </div>
-                <div>
+                <div className='px-1 py-1'>
                     <label htmlFor="email">Email address:</label>
-                    <input type="email" value={formState.email} name="email" onChange={handleChange} />
+                    <input type="email" placeholder='Enter Email Here' value={formState.email} name="email" onChange={handleChange} />
                 </div>
-                <div>
+                <div className='px-1 py-1'>
                     <label htmlFor="password">Password:</label>
-                    <input type="password" name="password" value={formState.password} onChange={handleChange} />
+                    <input type="password" name="password" placeholder='Enter Password' value={formState.password} onChange={handleChange} />
                 </div>
-                <div>
+                <div className='px-1 py-1'>
                     <label htmlFor="tel">Phone Number:</label>
-                    <input type="tel"  value={formState.phoneNumber} name="phoneNumber"  onChange={handleChange} />
+                    <input type="tel"  value={formState.phoneNumber} name="phoneNumber" placeholder='Enter Phone Number'  onChange={handleChange} />
                 </div>
-                <div>
+                <div className='px-1 py-1'>
                     <label htmlFor="text">Delivery address:</label>
-                    <input type="text"  value={formState.address} name="address" onChange={handleChange} />
+                    <input type="text" placeholder='Enter Address'  value={formState.address} name="address" onChange={handleChange} />
                 </div>
                 <h3 class="text-tertiary">Do you have any allergies?</h3>
                 <div>
@@ -152,17 +152,17 @@ function SignUpForm() {
                     <label htmlFor="sesame">Sesame</label>
                     <input type="checkbox" name="sesame" />
                 </div>
-                <div>
+                <div className='px-1 py-1'>
                     <label htmlFor="text">Other:</label>
                     <input type="checkbox" name="sesame" />
-                    <input type="text" name="firstName"/>
+                    <input type="text" name="firstName" placeholder='Any Other Allergies?'/>
                 </div>
                 {isError && (
                     <div>
                         <p className="error-text">Error</p>
                     </div>
                 )}
-                <button type="submit">Submit</button>
+                <button className='button-big' type="submit">Submit</button>
             </form>
             {error && <div>Sign up failed ):</div>}
         </section>
